@@ -9,7 +9,7 @@ public class Main {
 	
 	private static int search(int N) {
 		
-		for(int i=3;i<=N;i++) {
+		for(int i=4;i<=N;i++) {
 			dp[i] = Math.max(dp[i-1], Math.max(dp[i-2], dp[i-3]+stair[i-1])+stair[i]);
 			//System.out.println(i+": "+dp[i]);
 			//max = Math.max(max, dp[i]);
@@ -35,11 +35,10 @@ public class Main {
 			stair[i] = Integer.parseInt(bf.readLine());
 		}
 		int result = 0;
-		
 		dp[1] = stair[1];
 		dp[2] = stair[1]+stair[2];
-		
-		if(N>2) {
+		dp[3] = Math.max(dp[2], Math.max(stair[1], stair[2])+stair[3]);
+		if(N>3) {
 			result = search(N);
 		}else {
 			result = dp[N];
