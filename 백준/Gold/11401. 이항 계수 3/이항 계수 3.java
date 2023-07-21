@@ -74,11 +74,11 @@ public class Main {
 			B %= mod;
 		}
 		//System.out.println("n!(n-r)! : "+B);
-		/*
+		
 		// B * (mod-2);
 		long B_p = 1;
 		long T = mod-2;
-		System.out.println("B-p : "+B_p);
+		//System.out.println("B-p : "+B_p);
 		//System.out.println("T : "+T);
 		while(T>0) {
 			if(T % 2==1) {
@@ -93,8 +93,8 @@ public class Main {
 			//System.out.println("B : "+B);
 			//System.out.println("=======");
 			
-		}*/
-		long result = A * module(B, mod-2);
+		}
+		long result = A * B_p;
 		result %= mod;
 		
 		System.out.println(result);
