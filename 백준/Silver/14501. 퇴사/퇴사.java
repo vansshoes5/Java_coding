@@ -10,6 +10,21 @@ import java.util.*;
 public class Main {
 	
 	
+	public static int setting(int n, int[][] schedule) {
+		
+		int dp[] = new int[n+1];
+		
+		for(int i=0;i<n;i++) {
+			for(int j=i+schedule[i][0];j<=n;j++) {
+				
+				dp[j] = Math.max(dp[j], dp[i]+schedule[i][1]);
+			}
+		}
+		
+		
+		return dp[n];
+	}
+	
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub  
 		
@@ -26,21 +41,9 @@ public class Main {
 			schedule[i][1] = Integer.parseInt(stk.nextToken());
 		}
 		
-		//int take=0;
-		int dp[] = new int[n+1];
+		int result = setting(n, schedule);
 		
-		for(int i=0;i<n;i++) {
-			for(int j=i+schedule[i][0];j<=n;j++) {
-				
-				dp[j] = Math.max(dp[j], dp[i]+schedule[i][1]);
-				
-			}
-		}
-		/*for(int i=1;i<=n;i++) {
-			System.out.println(i+" : "+dp[i]);
-		}*/
-		
-		System.out.println(dp[n]);
+		System.out.println(result);
 		
 	}
 
