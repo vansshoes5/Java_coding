@@ -20,20 +20,12 @@ public class Main {
 	
 	private static void scale(int[] arr, int total) {
 		
-		for(int i=0;i<n;i++) {
-			//dp[arr[i]] = true;
+		for(int i=1;i<=n;i++) {
 			for(int j=total;j>=0;j--) {
-				
-				if(dp[j]) {
-					//System.out.println("j: "+j);
-					dp[j+arr[i]] = true;
-				}
+				if(dp[j]) dp[j+arr[i]] = true;
 			}
 			for(int j=0;j<=total;j++) {
-				if(dp[j]) {
-					//System.out.println("j: "+j);
-					dp[Math.abs(j-arr[i])] = true;
-				}
+				if(dp[j]) dp[Math.abs(j-arr[i])] = true;
 			}
 		}
 		
@@ -55,16 +47,19 @@ public class Main {
 		
 		
 		StringTokenizer stk = new StringTokenizer(bf.readLine());
-		for(int i=0;i<n;i++) {
+		for(int i=1;i<=n;i++) {
 			steel[i] = Integer.parseInt(stk.nextToken());
 			total += steel[i];
 		}
 		
+		int k = Integer.parseInt(bf.readLine());
+		
 		dp[0] = true;
+		
 		scale(steel, total);
 		
 		
-		int k = Integer.parseInt(bf.readLine());
+		
 		StringBuilder sb = new StringBuilder();
 		stk = new StringTokenizer(bf.readLine());
 		for(int i=0;i<k;i++) {
